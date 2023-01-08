@@ -15,6 +15,9 @@ class NetflixClone extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
+          textTheme: const TextTheme(
+            bodyText2: TextStyle(color: Colors.white),
+          ),
           scaffoldBackgroundColor: Colors.black,
         ),
         home: const RootApp(),
