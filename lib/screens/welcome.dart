@@ -8,15 +8,18 @@ class WelcomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: AnimatedTextKit(animatedTexts: [
-          TyperAnimatedText(
-            'NETFLIX',
-            textStyle: TextStyle(
-                fontFamily: 'BebasNeue',
-                fontSize: 100.0,
-                color: Colors.red.shade700),
-          )
-        ]),
+        child: AnimatedTextKit(
+            pause: const Duration(seconds: 2),
+            totalRepeatCount: 1,
+            animatedTexts: [
+              TyperAnimatedText(
+                'NETFLIX',
+                textStyle: TextStyle(
+                    fontFamily: 'BebasNeue',
+                    fontSize: 100.0,
+                    color: Colors.red.shade700),
+              )
+            ]),
       ),
     );
   }

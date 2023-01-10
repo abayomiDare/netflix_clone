@@ -16,3 +16,69 @@
 //     );
 //   }
 // }
+
+
+// SafeArea(
+// child: Column(
+// children: [
+// Row(
+// mainAxisAlignment: MainAxisAlignment.spaceBetween,
+// children: [
+// Padding(
+// padding: const EdgeInsets.only(left: 10),
+// child: Row(
+// children: [
+// Image.asset(
+// "images/logo.ico",
+// width: 35,
+// fit: BoxFit.cover,
+// )
+// ],
+// ),
+// ),
+// Row(
+// children: [
+// IconButton(
+// icon: Icon(
+// Icons.collections_bookmark,
+// size: 28,
+// ),
+// onPressed: () {}),
+// ],
+// )
+// ],
+// ),
+// SizedBox(
+// height: 15,
+// ),
+// Row(
+// mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+// children: [
+// Text(
+// "TV Shows",
+// style: TextStyle(
+// fontSize: 15, fontWeight: FontWeight.w500),
+// ),
+// Text(
+// "Movies",
+// style: TextStyle(
+// fontSize: 15, fontWeight: FontWeight.w500),
+// ),
+// Row(
+// children: [
+// Text(
+// "Categories",
+// style: TextStyle(
+// fontSize: 15, fontWeight: FontWeight.w500),
+// ),
+// SizedBox(
+// width: 3,
+// ),
+// Icon(Icons.keyboard_arrow_down)
+// ],
+// )
+// ],
+// )
+// ],
+// ),
+// ),

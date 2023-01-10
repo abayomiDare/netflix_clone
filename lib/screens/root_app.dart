@@ -7,6 +7,9 @@ import 'package:netflix_clone/screens/quick_laugh.dart';
 import 'package:netflix_clone/widget_state/management.dart';
 import 'package:provider/provider.dart';
 
+import 'package:flutter/services.dart';
+
+import '../components/app_bar.dart';
 import '../components/json/botton_nav_icon.dart';
 
 class RootApp extends StatelessWidget {
@@ -15,8 +18,10 @@ class RootApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       resizeToAvoidBottomInset: false,
       body: getScreens(context),
+      appBar: getAppBar(),
       bottomNavigationBar: getFooter(context),
     );
   }
