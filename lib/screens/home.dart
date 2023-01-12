@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_clone/components/app_bar.dart';
 import 'package:netflix_clone/components/json/home_images.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,13 +7,12 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-
       child: Scaffold(
-        // resizeToAvoidBottomInset: false,
-        body: homeWidget(context),
-        // body: Container(false
-        //   color: Colors.white,
-        // ),
+        resizeToAvoidBottomInset: false,
+        // body: homeWidget(context),
+        body: Container(
+          color: Colors.white,
+        ),
       ),
     );
   }
