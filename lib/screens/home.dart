@@ -16,22 +16,18 @@ class HomeScreen extends StatelessWidget {
             width: size.height - 80,
             child: Column(
               children: [
-
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     showModalBottomSheet(
                         shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.vertical(
-                            top: Radius.circular(30)
-                          )
-                        ),
-                        context: context, builder: (BuildContext context) {
-
-                      return const InfoBottomSheet(
-
-                      );
-
-                    });
+                            borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(30))),
+                        context: context,
+                        builder: (BuildContext context) {
+                          return const InfoBottomSheet(
+                            imgStr: 'images/banner.webp',
+                          );
+                        });
                   },
                   child: Stack(
                     children: [
@@ -91,9 +87,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                         Text(
                           'My List',
-                          style: TextStyle(
-                            fontSize: 10,
-                               color: Colors.grey),
+                          style: TextStyle(fontSize: 10, color: Colors.grey),
                         ),
                       ],
                     ),
@@ -161,20 +155,16 @@ class HomeScreen extends StatelessWidget {
                       child: Row(
                         children: List.generate(mylist.length, (index) {
                           return GestureDetector(
-                            onTap: (){
+                            onTap: () {
                               showModalBottomSheet(
                                   shape: const RoundedRectangleBorder(
                                       borderRadius: BorderRadius.vertical(
-                                          top: Radius.circular(30)
-                                      )
-                                  ),
-                                  context: context, builder: (BuildContext context) {
-
-                                return const InfoBottomSheet(
-
-                                );
-
-                              });
+                                          top: Radius.circular(30))),
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return InfoBottomSheet(
+                                        imgStr: mylist[index]['img']);
+                                  });
                             },
                             child: Container(
                               margin: const EdgeInsets.only(right: 8),
@@ -209,16 +199,29 @@ class HomeScreen extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: List.generate(popularList.length, (index) {
-                          return Container(
-                            margin: const EdgeInsets.only(right: 8),
-                            width: 110,
-                            height: 160,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(6),
-                                image: DecorationImage(
-                                    image:
-                                        AssetImage(popularList[index]['img']),
-                                    fit: BoxFit.cover)),
+                          return GestureDetector(
+                            onTap: () {
+                              showModalBottomSheet(
+                                  shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.vertical(
+                                          top: Radius.circular(30))),
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return InfoBottomSheet(
+                                        imgStr: popularList[index]['img']);
+                                  });
+                            },
+                            child: Container(
+                              margin: const EdgeInsets.only(right: 8),
+                              width: 110,
+                              height: 160,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(6),
+                                  image: DecorationImage(
+                                      image:
+                                          AssetImage(popularList[index]['img']),
+                                      fit: BoxFit.cover)),
+                            ),
                           );
                         }),
                       ),
@@ -241,16 +244,29 @@ class HomeScreen extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: List.generate(trendingList.length, (index) {
-                          return Container(
-                            margin: const EdgeInsets.only(right: 8),
-                            width: 110,
-                            height: 160,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(6),
-                                image: DecorationImage(
-                                    image:
-                                        AssetImage(trendingList[index]['img']),
-                                    fit: BoxFit.cover)),
+                          return GestureDetector(
+                            onTap: () {
+                              showModalBottomSheet(
+                                  shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.vertical(
+                                          top: Radius.circular(30))),
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return InfoBottomSheet(
+                                        imgStr: trendingList[index]['img']);
+                                  });
+                            },
+                            child: Container(
+                              margin: const EdgeInsets.only(right: 8),
+                              width: 110,
+                              height: 160,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(6),
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          trendingList[index]['img']),
+                                      fit: BoxFit.cover)),
+                            ),
                           );
                         }),
                       ),
@@ -273,16 +289,29 @@ class HomeScreen extends StatelessWidget {
                       child: Row(
                         children: List.generate(originalList.length, (index) {
                           return Expanded(
-                            child: Container(
-                              margin: const EdgeInsets.only(right: 8),
-                              width: 165,
-                              height: 300,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(6),
-                                  image: DecorationImage(
-                                      image: AssetImage(
-                                          originalList[index]['img']),
-                                      fit: BoxFit.cover)),
+                            child: GestureDetector(
+                              onTap: () {
+                                showModalBottomSheet(
+                                    shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.vertical(
+                                            top: Radius.circular(30))),
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return InfoBottomSheet(
+                                          imgStr: originalList[index]['img']);
+                                    });
+                              },
+                              child: Container(
+                                margin: const EdgeInsets.only(right: 8),
+                                width: 165,
+                                height: 300,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(6),
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            originalList[index]['img']),
+                                        fit: BoxFit.cover)),
+                              ),
                             ),
                           );
                         }),
@@ -308,16 +337,29 @@ class HomeScreen extends StatelessWidget {
                         padding: const EdgeInsets.only(left: 10),
                         child: Row(
                           children: List.generate(animeList.length, (index) {
-                            return Container(
-                              margin: const EdgeInsets.only(right: 8),
-                              width: 110,
-                              height: 160,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(6),
-                                  image: DecorationImage(
-                                      image:
-                                          AssetImage(animeList[index]['img']),
-                                      fit: BoxFit.cover)),
+                            return GestureDetector(
+                              onTap: () {
+                                showModalBottomSheet(
+                                    shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.vertical(
+                                            top: Radius.circular(30))),
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return InfoBottomSheet(
+                                          imgStr: animeList[index]['img']);
+                                    });
+                              },
+                              child: Container(
+                                margin: const EdgeInsets.only(right: 8),
+                                width: 110,
+                                height: 160,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(6),
+                                    image: DecorationImage(
+                                        image:
+                                            AssetImage(animeList[index]['img']),
+                                        fit: BoxFit.cover)),
+                              ),
                             );
                           }),
                         ),
