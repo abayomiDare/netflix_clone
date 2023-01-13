@@ -1,291 +1,214 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/components/json/home_images.dart';
 
+import '../components/info_bottom_sheet.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        // body: homeWidget(context),
-        body: Container(
-          color: Colors.white,
-        ),
-      ),
-    );
-  }
-}
+    var size = MediaQuery.of(context).size;
+    return SingleChildScrollView(
+      child: Stack(
+        children: [
+          SizedBox(
+            width: size.height - 80,
+            child: Column(
+              children: [
 
-Widget homeWidget(BuildContext context) {
-  var size = MediaQuery.of(context).size;
-  return SingleChildScrollView(
-    child: Stack(
-      children: [
-        SizedBox(
-          width: size.height - 80,
-          child: Column(
-            children: [
-              Stack(
-                children: [
-                  Container(
-                    height: 500,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage('images/banner.webp'),
-                          fit: BoxFit.cover),
-                    ),
-                  ),
-                  Container(
-                    height: 500,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                          colors: [
-                            Colors.black.withOpacity(0.85),
-                            Colors.black.withOpacity(0.0)
-                          ],
-                          end: Alignment.topCenter,
-                          begin: Alignment.bottomCenter),
-                    ),
-                  ),
-                  // SafeArea(
-                  //   child: Container(
-                  //     height: 10,
-                  //     width: 10,
-                  //     color: Colors.white,
-                  //   ),
-                  // ),
-                  SizedBox(
-                    height: 500,
-                    width: size.width,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Image.asset('images/title_img.webp', width: 300),
-                        const SizedBox(height: 15),
-                        const Text(
-                          'Excting - Sci-Fi Drama - Sci-Fi Adventure',
-                          style: TextStyle(fontSize: 11),
-                        )
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Column(
-                    children: const [
-                      Icon(
-                        Icons.add,
-                        size: 25,
+                GestureDetector(
+                  onTap: (){
+                    showModalBottomSheet(
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(30)
+                          )
+                        ),
+                        context: context, builder: (BuildContext context) {
+
+                      return const InfoBottomSheet(
+
+                      );
+
+                    });
+                  },
+                  child: Stack(
+                    children: [
+                      Container(
+                        height: 500,
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage('images/banner.webp'),
+                              fit: BoxFit.cover),
+                        ),
+                      ),
+                      Container(
+                        height: 500,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                              colors: [
+                                Colors.black.withOpacity(0.85),
+                                Colors.black.withOpacity(0.0)
+                              ],
+                              end: Alignment.topCenter,
+                              begin: Alignment.bottomCenter),
+                        ),
                       ),
                       SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        'My List',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w600, color: Colors.grey),
+                        height: 500,
+                        width: size.width,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Image.asset('images/title_img.webp', width: 300),
+                            const SizedBox(height: 15),
+                            const Text(
+                              'Excting - Sci-Fi Drama - Sci-Fi Adventure',
+                              style: TextStyle(fontSize: 11),
+                            )
+                          ],
+                        ),
                       ),
                     ],
                   ),
-                  Container(
-                    height: 30,
-                    width: 80,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4),
-                        color: Colors.white),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Column(
                       children: const [
                         Icon(
-                          Icons.play_arrow_rounded,
-                          color: Colors.black,
+                          Icons.add,
+                          size: 25,
                         ),
                         SizedBox(
-                          width: 2,
+                          height: 5,
                         ),
                         Text(
-                          'Play',
-                          style: TextStyle(color: Colors.black),
-                        )
+                          'My List',
+                          style: TextStyle(
+                            fontSize: 10,
+                               color: Colors.grey),
+                        ),
                       ],
                     ),
-                  ),
-                  Column(
-                    children: const [
-                      Icon(
-                        Icons.info_outline_rounded,
-                        size: 30,
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        'info',
-                        style: TextStyle(color: Colors.grey),
-                      )
-                    ],
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 40,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.only(left: 15, right: 15),
-                    child: Text(
-                      "My List",
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: List.generate(mylist.length, (index) {
-                        return Container(
-                          margin: const EdgeInsets.only(right: 8),
-                          width: 110,
-                          height: 160,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(6),
-                            image: DecorationImage(
-                                image: AssetImage(mylist[index]['img']),
-                                fit: BoxFit.cover),
+                    Container(
+                      height: 45,
+                      width: 90,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(4),
+                          color: Colors.white),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Icon(
+                            Icons.play_arrow_rounded,
+                            color: Colors.black,
                           ),
-                        );
-                      }),
+                          SizedBox(
+                            width: 2,
+                          ),
+                          Text(
+                            'Play',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                color: Colors.black),
+                          )
+                        ],
+                      ),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(left: 15, right: 15),
-                    child: Text(
-                      "Popular on Netflix",
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    Column(
+                      children: const [
+                        Icon(
+                          Icons.info_outline_rounded,
+                          size: 23,
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          'info',
+                          style: TextStyle(color: Colors.grey),
+                        )
+                      ],
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(left: 15, right: 15),
+                      child: Text(
+                        "My List",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: List.generate(popularList.length, (index) {
-                        return Container(
-                          margin: const EdgeInsets.only(right: 8),
-                          width: 110,
-                          height: 160,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6),
-                              image: DecorationImage(
-                                  image: AssetImage(popularList[index]['img']),
-                                  fit: BoxFit.cover)),
-                        );
-                      }),
+                    const SizedBox(
+                      height: 8,
                     ),
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(left: 15, right: 15),
-                    child: Text(
-                      "Trending Now",
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: List.generate(trendingList.length, (index) {
-                        return Container(
-                          margin: const EdgeInsets.only(right: 8),
-                          width: 110,
-                          height: 160,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6),
-                              image: DecorationImage(
-                                  image: AssetImage(trendingList[index]['img']),
-                                  fit: BoxFit.cover)),
-                        );
-                      }),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(left: 15, right: 15),
-                    child: Text(
-                      "Netflix Originals",
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  SingleChildScrollView(
-                    child: Row(
-                      children: List.generate(originalList.length, (index) {
-                        return Expanded(
-                          child: Container(
-                            margin: const EdgeInsets.only(right: 8),
-                            width: 165,
-                            height: 300,
-                            decoration: BoxDecoration(
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: List.generate(mylist.length, (index) {
+                          return GestureDetector(
+                            onTap: (){
+                              showModalBottomSheet(
+                                  shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.vertical(
+                                          top: Radius.circular(30)
+                                      )
+                                  ),
+                                  context: context, builder: (BuildContext context) {
+
+                                return const InfoBottomSheet(
+
+                                );
+
+                              });
+                            },
+                            child: Container(
+                              margin: const EdgeInsets.only(right: 8),
+                              width: 110,
+                              height: 160,
+                              decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(6),
                                 image: DecorationImage(
-                                    image:
-                                        AssetImage(originalList[index]['img']),
-                                    fit: BoxFit.cover)),
-                          ),
-                        );
-                      }),
+                                    image: AssetImage(mylist[index]['img']),
+                                    fit: BoxFit.cover),
+                              ),
+                            ),
+                          );
+                        }),
+                      ),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(left: 15, right: 15),
-                    child: Text(
-                      "Anime",
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    const SizedBox(
+                      height: 30,
                     ),
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 10),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 15, right: 15),
+                      child: Text(
+                        "Popular on Netflix",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
                       child: Row(
-                        children: List.generate(animeList.length, (index) {
+                        children: List.generate(popularList.length, (index) {
                           return Container(
                             margin: const EdgeInsets.only(right: 8),
                             width: 110,
@@ -293,19 +216,120 @@ Widget homeWidget(BuildContext context) {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(6),
                                 image: DecorationImage(
-                                    image: AssetImage(animeList[index]['img']),
+                                    image:
+                                        AssetImage(popularList[index]['img']),
                                     fit: BoxFit.cover)),
                           );
                         }),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 15, right: 15),
+                      child: Text(
+                        "Trending Now",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: List.generate(trendingList.length, (index) {
+                          return Container(
+                            margin: const EdgeInsets.only(right: 8),
+                            width: 110,
+                            height: 160,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(6),
+                                image: DecorationImage(
+                                    image:
+                                        AssetImage(trendingList[index]['img']),
+                                    fit: BoxFit.cover)),
+                          );
+                        }),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 15, right: 15),
+                      child: Text(
+                        "Netflix Originals",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    SingleChildScrollView(
+                      child: Row(
+                        children: List.generate(originalList.length, (index) {
+                          return Expanded(
+                            child: Container(
+                              margin: const EdgeInsets.only(right: 8),
+                              width: 165,
+                              height: 300,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(6),
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          originalList[index]['img']),
+                                      fit: BoxFit.cover)),
+                            ),
+                          );
+                        }),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 15, right: 15),
+                      child: Text(
+                        "Anime",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Row(
+                          children: List.generate(animeList.length, (index) {
+                            return Container(
+                              margin: const EdgeInsets.only(right: 8),
+                              width: 110,
+                              height: 160,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(6),
+                                  image: DecorationImage(
+                                      image:
+                                          AssetImage(animeList[index]['img']),
+                                      fit: BoxFit.cover)),
+                            );
+                          }),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
-    ),
-  );
+        ],
+      ),
+    );
+  }
 }

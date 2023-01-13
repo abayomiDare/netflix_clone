@@ -9,6 +9,6 @@ List leadItems = [
   },
   {"item": const Text("Games")},
   {"item": const Text("New & Hot")},
-  {"item": const Text("Games")},
+  {"item": null},
   {"item": const Text("Downloads")},
 ];

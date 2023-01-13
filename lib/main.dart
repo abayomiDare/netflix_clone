@@ -18,16 +18,17 @@ class NetflixClone extends StatelessWidget {
         theme: ThemeData(
           appBarTheme: const AppBarTheme(
             color: Colors.transparent,
-            systemOverlayStyle: SystemUiOverlayStyle(systemNavigationBarColor: Colors.lime,
+            systemOverlayStyle: SystemUiOverlayStyle(
               statusBarColor: Colors.transparent,
-              statusBarIconBrightness: Brightness.dark, // status bar icons' color
+              statusBarIconBrightness:
+                  Brightness.light, // status bar icons' color
             ),
           ),
           iconTheme: const IconThemeData(color: Colors.white),
           textTheme: const TextTheme(
             bodyText2: TextStyle(color: Colors.white),
           ),
-          scaffoldBackgroundColor: Colors.white,
+          scaffoldBackgroundColor: Colors.black,
         ),
         home: const RootApp(),
       ),

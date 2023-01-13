@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_clone/components/screen_indexedstack.dart';
+import 'package:netflix_clone/components/indexedstack.dart';
 import 'package:netflix_clone/widget_state/management.dart';
 import 'package:provider/provider.dart';
 
