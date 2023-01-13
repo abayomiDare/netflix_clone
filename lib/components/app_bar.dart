@@ -17,7 +17,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSize {
       title: Container(
         color: Colors.transparent,
         child: Row(
-
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             leadWidget,
@@ -35,13 +34,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSize {
                   width: 25,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
-                      // gradient: LinearGradient(
-                      //     colors: [
-                      //       Colors.red.withOpacity(0.85),
-                      //       Colors.black.withOpacity(0.0)
-                      //     ],
-                      //     end: Alignment.topCenter,
-                      //     begin: Alignment.bottomCenter),
+                      gradient: LinearGradient(
+                          colors: [
+                            Colors.black.withOpacity(0.85),
+                            Colors.black.withOpacity(0.0)
+                          ],
+                          end: Alignment.topCenter,
+                          begin: Alignment.bottomCenter),
                       image: const DecorationImage(
                         image: AssetImage(
                           "images/netflix_avatar.png",
