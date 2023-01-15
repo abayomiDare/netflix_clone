@@ -12,7 +12,7 @@ class RootApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
+      // extendBodyBehindAppBar: true,
       resizeToAvoidBottomInset: false,
       body: const ScreenIndex(),
       appBar: Provider.of<StateManager>(context).getActiveTab == 3
